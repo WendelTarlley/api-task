@@ -1,4 +1,4 @@
-package com.devtarlley.apitask;
+package com.devtarlley.apitask.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
