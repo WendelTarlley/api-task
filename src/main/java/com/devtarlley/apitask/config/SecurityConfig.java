@@ -53,10 +53,6 @@ public class SecurityConfig implements WebMvcConfigurer {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(request -> {
                     request.requestMatchers(HttpMethod.POST, "/auth/**").permitAll();
-                    request.requestMatchers(HttpMethod.PATCH, "/auth/**").permitAll();
-//                    request.requestMatchers(HttpMethod.GET, "/documentos/**").permitAll();
-//                    request.requestMatchers(HttpMethod.POST, "/api/email").permitAll();
-//                    request.requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll();
                     request.anyRequest().authenticated();
                 })
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)

@@ -1,4 +1,16 @@
 package com.devtarlley.apitask.dto.menu;
 
-public record MenuDTO(String nome,String link,String icone) {
+import com.devtarlley.apitask.dto.submenu.SubMenuDTO;
+import jakarta.validation.constraints.NotBlank;
+
+import java.util.List;
+
+public record MenuDTO(Long id,
+                      @NotBlank
+                      String nome,
+                      @NotBlank
+                      String link,
+                      @NotBlank
+                      String icone,
+                      List<SubMenuDTO> submenu) {
 }

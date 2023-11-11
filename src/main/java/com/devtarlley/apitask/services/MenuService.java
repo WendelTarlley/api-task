@@ -1,7 +1,7 @@
 package com.devtarlley.apitask.services;
 
-import com.devtarlley.apitask.MenuMapper;
 import com.devtarlley.apitask.domain.Menu;
+import com.devtarlley.apitask.mapper.MenuMapper;
 import com.devtarlley.apitask.dto.menu.MenuDTO;
 import com.devtarlley.apitask.repository.MenuRepository;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,17 @@ public class MenuService {
     }
 
     public List<MenuDTO> getMenu(){
-        return  mapper.toDTO(this.menuRepository.findAll());
+        List<Menu> all = this.menuRepository.findAll();
+        return  mapper.toDTO(all);
     }
 
+    public MenuDTO getMenuPorNome(String nomeMenu) {
+        Menu menu = this.menuRepository.findByNome(nomeMenu)
+                .orElseThrow();
+        return mapper.toDTO(menu);
+    }
+
+    public Menu salvarMenu(MenuDTO menuDTO) {
+      return  this.menuRepository.save(mapper.toEntity(menuDTO));
+    }
 }

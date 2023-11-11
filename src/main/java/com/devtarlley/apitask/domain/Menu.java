@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @AllArgsConstructor
 @RequiredArgsConstructor
@@ -21,4 +24,9 @@ public class Menu {
     private String link;
 
     private String icone;
+
+    @OneToMany(mappedBy = "menu", orphanRemoval = true)
+    private List<SubMenu> submenu = new ArrayList<>();
+
 }
+
