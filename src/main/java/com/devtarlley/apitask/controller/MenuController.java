@@ -33,11 +33,17 @@ public class MenuController {
     }
 
     @PostMapping
-    public ResponseEntity salvarMenu(@RequestBody @Valid MenuDTO menuDTO){
+    public ResponseEntity<MenuDTO> salvarMenu(@RequestBody @Valid MenuDTO menuDTO){
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
                 .buildAndExpand(menuDTO)
                 .toUri();
         return ResponseEntity.created(uri).body(this.menuService.salvarMenu(menuDTO));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarMenu(@PathVariable Long id){
+        this.menuService.deletarMenu(id);
+        return ResponseEntity.accepted().build();
     }
 }

@@ -29,7 +29,11 @@ public class MenuService {
         return mapper.toDTO(menu);
     }
 
-    public Menu salvarMenu(MenuDTO menuDTO) {
-      return  this.menuRepository.save(mapper.toEntity(menuDTO));
+    public MenuDTO salvarMenu(MenuDTO menuDTO) {
+      return this.mapper.toDTO(this.menuRepository.save(mapper.toEntity(menuDTO)));
+    }
+
+    public void deletarMenu(Long id) {
+        this.menuRepository.deleteById(id);
     }
 }

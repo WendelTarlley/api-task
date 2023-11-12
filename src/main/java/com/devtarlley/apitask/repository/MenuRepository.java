@@ -8,5 +8,4 @@ import java.util.Optional;
 public interface MenuRepository extends JpaRepository<Menu, Long> {
     Optional<Menu> findByNome(String nome);
 
-
 }

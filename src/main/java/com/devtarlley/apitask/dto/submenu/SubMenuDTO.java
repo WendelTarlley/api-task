@@ -1,4 +1,6 @@
 package com.devtarlley.apitask.dto.submenu;
 
-public record SubMenuDTO(String nome, String nomeComponente) {
+import com.devtarlley.apitask.dto.menu.MenuDTORetornoSubMenu;
+
+public record SubMenuDTO(String nome, String nomeComponente, MenuDTORetornoSubMenu menu) {
 }

@@ -3,6 +3,7 @@ package com.devtarlley.apitask.mapper;
 import com.devtarlley.apitask.domain.SubMenu;
 import com.devtarlley.apitask.dto.submenu.SubMenuDTO;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ public interface SubMenuMapper {
 
     SubMenu toEntity(SubMenuDTO subMenuDTO);
 
+    @Mapping(target = "menu", source = "menu")
     SubMenuDTO toDTO(SubMenu submenu);
 
     List<SubMenu> toEntity(List<SubMenuDTO> subMenuDTO);
