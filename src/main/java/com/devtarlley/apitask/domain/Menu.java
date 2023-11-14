@@ -17,7 +17,7 @@ public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private Long idMenu;
 
     private String nome;
 
@@ -25,7 +25,7 @@ public class Menu {
 
     private String icone;
 
-    @OneToMany(mappedBy = "menu", orphanRemoval = true)
+    @OneToMany(mappedBy = "menu")
     private List<SubMenu> submenu = new ArrayList<>();
 
 }

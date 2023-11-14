@@ -2,6 +2,7 @@ package com.devtarlley.apitask.mapper;
 
 import com.devtarlley.apitask.domain.SubMenu;
 import com.devtarlley.apitask.dto.submenu.SubMenuDTO;
+import com.devtarlley.apitask.dto.submenu.SubMenuDTORetornoSubMenu;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -18,4 +19,10 @@ public interface SubMenuMapper {
     List<SubMenu> toEntity(List<SubMenuDTO> subMenuDTO);
 
     List<SubMenuDTO> toDTO(List<SubMenu> submenu);
+
+    SubMenuDTO toDTO(SubMenuDTORetornoSubMenu subMenuDTORetornoSubMenu);
+
+    SubMenuDTORetornoSubMenu toDTORetornoSubMenu(SubMenuDTO subMenuDTO);
+
+    SubMenu toEntity(SubMenuDTORetornoSubMenu subMenuDTORetornoSubMenu);
 }

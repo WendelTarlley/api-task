@@ -22,7 +22,6 @@ public class MenuController {
     }
 
     @GetMapping
-    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<List<MenuDTO>> getMenu(){
         return ResponseEntity.ok().body(menuService.getMenu());
     }
@@ -45,5 +44,11 @@ public class MenuController {
     public ResponseEntity<Void> deletarMenu(@PathVariable Long id){
         this.menuService.deletarMenu(id);
         return ResponseEntity.accepted().build();
+    }
+
+    @PatchMapping
+    public ResponseEntity<MenuDTO> atualizarMenu(@RequestBody @Valid MenuDTO menuDTO){
+
+        return ResponseEntity.ok().body(this.menuService.salvarMenu(menuDTO));
     }
 }
