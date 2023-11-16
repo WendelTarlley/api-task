@@ -32,9 +32,18 @@ public class MenuService {
     }
 
     public MenuDTO salvarMenu(MenuDTO menuDTO) {
+
+        return this.mapper.toDTO(this.menuRepository.save(mapper.toEntity(menuDTO)));
+    }
+
+    public void deletarMenu(Long id) {
+        this.menuRepository.deleteById(id);
+    }
+
+    public MenuDTO atualizarMenu(MenuDTO menuDTO){
         List<SubMenuDTORetornoSubMenu> submenu = menuDTO.submenu();
         List<Long> idsList;
-        if (!submenu.isEmpty()){
+        if (submenu != null && !submenu.isEmpty()){
 
             List<SubMenuDTO> subMenuDTOS = this.subMenuService.buscarSubMenuPorMenuId(menuDTO.idMenu());
             idsList = submenu.stream().map(SubMenuDTORetornoSubMenu::idSubMenu).toList();
@@ -53,10 +62,7 @@ public class MenuService {
             subMenuDTOS.forEach(objeto -> objeto.setMenu(null));
             this.subMenuService.salvarSubMenu(subMenuDTOS);
         }
-        return this.mapper.toDTO(this.menuRepository.save(mapper.toEntity(menuDTO)));
-    }
+        return this.salvarMenu(menuDTO);
 
-    public void deletarMenu(Long id) {
-        this.menuRepository.deleteById(id);
     }
 }

@@ -49,6 +49,6 @@ public class MenuController {
     @PatchMapping
     public ResponseEntity<MenuDTO> atualizarMenu(@RequestBody @Valid MenuDTO menuDTO){
 
-        return ResponseEntity.ok().body(this.menuService.salvarMenu(menuDTO));
+        return ResponseEntity.ok().body(this.menuService.atualizarMenu(menuDTO));
     }
 }

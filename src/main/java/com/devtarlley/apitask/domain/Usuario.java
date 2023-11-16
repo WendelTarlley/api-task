@@ -21,13 +21,20 @@ public class Usuario implements UserDetails {
     @Column(name = "id")
     private Long idUsuario;
 
-    String nome;
+    private String nome;
 
-    String password;
+    private String password;
 
-    String email;
+    private String email;
 
-    UserRole roles;
+    private UserRole roles;
+
+    private boolean isContaNaoExpirada;
+
+    private boolean isAtivo;
+    private boolean isCredenciaisNaoExpirada;
+    private boolean iscontaNaoBloqueada;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
@@ -47,22 +54,22 @@ public class Usuario implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;
+        return this.isContaNaoExpirada;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return this.iscontaNaoBloqueada;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
+        return this.isCredenciaisNaoExpirada;
     }
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return this.isAtivo;
     }
 
 
