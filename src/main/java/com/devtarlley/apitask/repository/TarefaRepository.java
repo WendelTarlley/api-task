@@ -8,7 +8,6 @@ import java.util.List;
 
 public interface TarefaRepository extends JpaRepository<Tarefa, Long> {
 
-//    @Query("select t from Tarefa t where t.status = ?1")
-    List<TarefaDTO> findByStatus(Status status);
+    List<Tarefa> findByStatus(Status status);
 
 }
