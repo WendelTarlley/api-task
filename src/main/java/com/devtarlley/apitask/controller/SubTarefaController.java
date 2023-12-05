@@ -2,11 +2,9 @@ package com.devtarlley.apitask.controller;
 
 import com.devtarlley.apitask.dto.subtarefa.SubTarefaDTO;
 import com.devtarlley.apitask.services.SubTarefaService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,5 +31,16 @@ public class SubTarefaController {
     @GetMapping("/porIdTarefa/{idTarefa}")
     public ResponseEntity<List<SubTarefaDTO>> buscarSubTarefasPorIdTarefa(@PathVariable Long idTarefa){
         return ResponseEntity.ok(this.subTarefaService.buscarSubTarefasPorIdTarefa(idTarefa));
+    }
+
+    @PatchMapping("/atualizarSubTarefa")
+    public ResponseEntity<Void> atualizarSubTarefa(@RequestBody @Valid SubTarefaDTO subTarefaDTO){
+            this.subTarefaService.atualizarSubTarefa(subTarefaDTO);
+        return ResponseEntity.ok().build();
+    }
+    @PatchMapping
+    public ResponseEntity<Void> atualizarSubTarefas(@RequestBody @Valid List<SubTarefaDTO> subTarefaDTOS){
+            this.subTarefaService.atualizarSubTarefas(subTarefaDTOS);
+        return ResponseEntity.ok().build();
     }
 }

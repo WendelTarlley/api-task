@@ -1,5 +1,7 @@
 package com.devtarlley.apitask.dto.subtarefa;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,11 +9,15 @@ import lombok.Setter;
 @Setter
 public class SubTarefaDTO {
 
+    @NotNull
     private Long idSubTarefa;
 
+    @NotBlank
     private String nome;
 
-    private boolean finalizado;
+    @NotNull
+    private Boolean finalizada;
 
+    @NotNull
     private Long idTarefa;
 }

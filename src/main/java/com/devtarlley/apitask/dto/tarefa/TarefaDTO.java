@@ -14,5 +14,5 @@ public class TarefaDTO {
 
     private String nome;
 
-    private List<SubTarefaDTO> subTarefaDTOS;
+    private List<SubTarefaDTO> subTarefas;
 }

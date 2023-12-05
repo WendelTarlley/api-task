@@ -10,6 +10,7 @@ import java.util.List;
 @Mapper(componentModel = "spring", uses = {SubTarefaMapper.class,TarefaMapper.class})
 public interface SubTarefaMapper {
 
+    @Mapping(target = "tarefa.idTarefa",source = "idTarefa")
     SubTarefa toEntity(SubTarefaDTO subTarefaDTO);
 
     List<SubTarefa> toEntity(List<SubTarefaDTO> subTarefaDTOS);

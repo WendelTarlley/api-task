@@ -1,5 +1,6 @@
 package com.devtarlley.apitask.services;
 
+import com.devtarlley.apitask.domain.SubTarefa;
 import com.devtarlley.apitask.dto.subtarefa.SubTarefaDTO;
 import com.devtarlley.apitask.mapper.SubTarefaMapper;
 import com.devtarlley.apitask.repository.SubTarefaRepository;
@@ -29,5 +30,16 @@ public class SubTarefaService {
 
     public List<SubTarefaDTO> buscarSubTarefasPorIdTarefa(Long idTarefa){
         return this.subTarefaMapper.toDTO(this.subTarefaRepository.findByTarefa_IdTarefa(idTarefa));
+    }
+
+    private SubTarefa salvarSubTarefa(SubTarefaDTO subTarefaDTO){
+        return this.subTarefaRepository.save(this.subTarefaMapper.toEntity(subTarefaDTO));
+    }
+
+    public void atualizarSubTarefa(SubTarefaDTO subTarefaDTO) {
+        this.salvarSubTarefa(subTarefaDTO);
+    }
+    public void atualizarSubTarefas(List<SubTarefaDTO> subTarefaDTOS) {
+        subTarefaDTOS.forEach(this::salvarSubTarefa);
     }
 }

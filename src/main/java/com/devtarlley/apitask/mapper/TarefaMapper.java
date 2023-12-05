@@ -14,7 +14,7 @@ public interface TarefaMapper {
     List<Tarefa> toEntity(List<TarefaDTO> tarefaDTOList);
 
 
-    @Mapping(target = "subTarefaDTOS",source = "subTarefas")
+    @Mapping(target = "subTarefas",source = "subTarefas")
     TarefaDTO toDTO(Tarefa tarefa);
     List<TarefaDTO> toDTO(List<Tarefa> tarefaList);
 
